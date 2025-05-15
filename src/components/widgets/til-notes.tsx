@@ -20,7 +20,7 @@ export const TILNotes = () => {
   }, [notes]);
 
   return (
-    <Tabs defaultValue="edit">
+    <Tabs defaultValue="preview">
       <TabsList className="mb-2">
         <TabsTrigger value="edit">Edit</TabsTrigger>
         <TabsTrigger value="preview">Preview</TabsTrigger>
