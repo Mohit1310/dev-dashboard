@@ -11,6 +11,10 @@ import {
   FileText,
   Globe,
   Codesandbox,
+  MessageCircleDashed,
+  BotMessageSquare,
+  Bolt,
+  MessageCircleHeart,
 } from "lucide-react";
 
 const icons: Record<string, LucideIcon> = {
@@ -20,6 +24,10 @@ const icons: Record<string, LucideIcon> = {
   "file-text": FileText,
   globe: Globe,
   codesandbox: Codesandbox,
+  "message-circle-dashed": MessageCircleDashed,
+  "bot-message-square": BotMessageSquare,
+  bolt: Bolt,
+  "message-circle-heart": MessageCircleHeart,
 };
 
 export default function ToolsWidget() {

@@ -1,7 +1,8 @@
 import { useNewsStore } from "@/stores/useNews";
 import { useQuery } from "@tanstack/react-query";
+import type { RedditPost } from "@/lib/types";
 
-export function useHackerNews(page: number) {
+export function fetchHackerNewsPosts(page: number) {
   return useQuery({
     queryKey: ["hacker-news", page],
     queryFn: async () => {
@@ -24,7 +25,7 @@ export function useHackerNews(page: number) {
   });
 }
 
-export function useDevTo(page: number) {
+export function fetchDevToPosts(page: number) {
   return useQuery({
     queryKey: ["devto", page],
     queryFn: async () => {
@@ -36,21 +37,27 @@ export function useDevTo(page: number) {
   });
 }
 
-export function useReddit(page: number) {
+export function fetchRedditPosts(after: string, sort = "top") {
   const subreddit = useNewsStore((s) => s.subreddit);
+
   return useQuery({
-    queryKey: ["reddit", page],
+    queryKey: ["reddit", subreddit, sort, after],
     queryFn: async () => {
+      const limit = 5;
+      const afterParam = after ? `&after=${after}` : "";
       const res = await fetch(
-        `https://www.reddit.com/r/${subreddit}/top.json?limit=5&t=day`,
+        `https://www.reddit.com/r/${subreddit}/${sort}.json?limit=${limit}&t=day&after=${afterParam}`,
       );
       const json = await res.json();
-      return json.data.children.map((c: any) => c.data);
+      return {
+        posts: json.data.children.map((c: { data: RedditPost }) => c.data),
+        after: json.data.after,
+      };
     },
   });
 }
 
-export function useGitHubTrending(page = 0) {
+export function fetchGitHubTrendingRepos(page = 0) {
   return useQuery({
     queryKey: ["github-trending", page],
     queryFn: async () => {
@@ -62,7 +69,7 @@ export function useGitHubTrending(page = 0) {
   });
 }
 
-export function useMedium(page = 0) {
+export function fetchMediumPosts(page = 0) {
   const tag = useNewsStore((s) => s.mediumTag);
   return useQuery({
     queryKey: ["medium", tag, page],

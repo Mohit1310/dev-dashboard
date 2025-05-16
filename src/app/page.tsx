@@ -13,7 +13,10 @@ export default function Dashboard() {
         <GitHubActivity />
       </WidgetCard>
       <ToolsWidget />
-      <DailyNewsWidget />
+      <div className="col-span-2">
+        <DailyNewsWidget />
+        {/* You can add another news widget here if needed */}
+      </div>
       <WidgetCard title="Today I Learned">
         <TILNotes />
       </WidgetCard>
