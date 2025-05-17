@@ -1,12 +1,12 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNewsStore } from "@/stores/useNews";
-import HackerNews from "./news/hacker-news";
 import DevToPosts from "./news/dev-to-posts";
-import RedditPosts from "./news/reddit-posts";
+import HackerNews from "./news/hacker-news";
 import MediumPosts from "./news/medium-posts";
+import RedditPosts from "./news/reddit-posts";
 // import GithbuTrending from "./news/github-trending";
 
 export default function DailyNewsWidget() {

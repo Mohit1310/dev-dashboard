@@ -1,12 +1,12 @@
 "use client";
 
 import {
-  BarChart,
   Bar,
+  BarChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  ResponsiveContainer,
 } from "recharts";
 
 export function GitHubChart({

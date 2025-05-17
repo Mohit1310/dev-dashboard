@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getRSSFeed, type FeedItem } from "@/lib/rss";
+import { type FeedItem, getRSSFeed } from "@/lib/rss";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export const RSSFeed = () => {
   const [items, setItems] = useState<FeedItem[]>([]);
@@ -24,7 +24,7 @@ export const RSSFeed = () => {
   }, []);
 
   if (loading)
-    return <div className="text-sm text-muted-foreground">Loading...</div>;
+    return <div className="text-muted-foreground text-sm">Loading...</div>;
 
   return (
     <ul className="space-y-2 text-sm">
@@ -39,7 +39,7 @@ export const RSSFeed = () => {
             {item.title}
           </Link>
           {item.pubDate && (
-            <div className="text-xs text-muted-foreground">
+            <div className="text-muted-foreground text-xs">
               {new Date(item.pubDate).toLocaleDateString()}
             </div>
           )}

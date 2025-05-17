@@ -1,15 +1,14 @@
 "use client";
-import React from "react";
-import { ThemeToggle } from "./theme-toggle";
-import { ProfileDropdown } from "./profile/profile-dropdown";
 import { useGitHubStore } from "@/stores/useGithub";
+import { ProfileDropdown } from "./profile/profile-dropdown";
+import { ThemeToggle } from "./theme-toggle";
 
 const Header = () => {
   const { username } = useGitHubStore();
 
   return (
-    <div className="flex justify-between items-center max-w-6xl mx-auto p-4 pb-0">
-      <h1 className="text-2xl font-semibold">
+    <div className="mx-auto flex max-w-6xl items-center justify-between p-4 pb-0">
+      <h1 className="font-semibold text-2xl">
         {username || "john-doe"}&apos;s dashboard
       </h1>
       <div className="flex items-center gap-2">

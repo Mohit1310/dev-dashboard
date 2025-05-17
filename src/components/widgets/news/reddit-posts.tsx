@@ -2,12 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import NewsSkeleton from "./news-skeleton";
-import { useEffect, useState } from "react";
-import { useNewsStore } from "@/stores/useNews";
-import { fetchRedditPosts } from "@/lib/news/fetch-news";
-import type { RedditPost } from "@/lib/types";
-import RedditPaginationControls from "./reddit-pagination-controls";
 import {
   Select,
   SelectContent,
@@ -15,6 +9,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { fetchRedditPosts } from "@/lib/news/fetch-news";
+import type { RedditPost } from "@/lib/types";
+import { useNewsStore } from "@/stores/useNews";
+import { useEffect, useState } from "react";
+import NewsSkeleton from "./news-skeleton";
+import RedditPaginationControls from "./reddit-pagination-controls";
 
 const RedditPosts = () => {
   const [sort, setSort] = useState("top");
@@ -26,7 +26,7 @@ const RedditPosts = () => {
   useEffect(() => {
     setRedditAfter("");
     setAfterHistory([""]);
-  }, [sort]);
+  }, []);
 
   // Track history for going back
   useEffect(() => {
@@ -51,14 +51,14 @@ const RedditPosts = () => {
           value={subredditInput}
           onChange={(e) => setSubredditInput(e.target.value)}
           placeholder="Enter subreddit name (e.g. react)"
-          className="px-2 py-1 border rounded text-sm w-full"
+          className="w-full rounded border px-2 py-1 text-sm"
         />
         <Select
           value={sort}
           onValueChange={(v) => setSort(v)}
           defaultValue="top"
         >
-          <SelectTrigger className="w-[150px] mb-2">
+          <SelectTrigger className="mb-2 w-[150px]">
             <SelectValue placeholder="Sort" />
           </SelectTrigger>
           <SelectContent>
@@ -73,7 +73,7 @@ const RedditPosts = () => {
           Go
         </Button>
       </form>
-      <div className="text-xs text-muted-foreground mb-2">
+      <div className="mb-2 text-muted-foreground text-xs">
         Showing Reddit posts of subreddit: <strong>{subreddit}</strong>
       </div>
       <ScrollArea className="h-[200px]">
@@ -84,12 +84,12 @@ const RedditPosts = () => {
             <a
               key={p.id}
               href={`https://reddit.com${p.permalink}`}
-              className="block border rounded p-3 hover:bg-muted transition"
+              className="block rounded border p-3 transition hover:bg-muted"
               rel="noreferrer"
               target="_blank"
             >
-              <div className="font-medium line-clamp-2">{p.title}</div>
-              <div className="text-xs text-muted-foreground">
+              <div className="line-clamp-2 font-medium">{p.title}</div>
+              <div className="text-muted-foreground text-xs">
                 {p.ups} upvotes · {p.num_comments} comments
               </div>
             </a>

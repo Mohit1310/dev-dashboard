@@ -1,9 +1,9 @@
 "use client";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import PaginationControls from "./pagination-controls";
-import NewsSkeleton from "./news-skeleton";
-import { useState } from "react";
 import { fetchHackerNewsPosts } from "@/lib/news/fetch-news";
+import { useState } from "react";
+import NewsSkeleton from "./news-skeleton";
+import PaginationControls from "./pagination-controls";
 
 const HackerNews = () => {
   const [hnPage, setHnPage] = useState(0);
@@ -18,12 +18,12 @@ const HackerNews = () => {
             <a
               key={s.id}
               href={s.url || `https://news.ycombinator.com/item?id=${s.id}`}
-              className="block border rounded p-3 hover:bg-muted transition"
+              className="block rounded border p-3 transition hover:bg-muted"
               rel="noreferrer"
               target="_blank"
             >
-              <div className="font-medium line-clamp-2">{s.title}</div>
-              <div className="text-xs text-muted-foreground">
+              <div className="line-clamp-2 font-medium">{s.title}</div>
+              <div className="text-muted-foreground text-xs">
                 by {s.by} ⬆ {s.score}
               </div>
             </a>

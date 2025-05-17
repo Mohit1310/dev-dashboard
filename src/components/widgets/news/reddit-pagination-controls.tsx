@@ -12,7 +12,7 @@ const RedditPaginationControls = ({
   const currentIndex = history.indexOf(after);
 
   return (
-    <div className="flex justify-between mt-4">
+    <div className="mt-4 flex justify-between">
       <Button
         variant="ghost"
         onClick={() => setAfter(history[currentIndex - 1] || "")}

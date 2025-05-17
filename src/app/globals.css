@@ -129,20 +129,20 @@
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
-    border-radius: 5px;
+  background: hsl(var(--border));
+  border-radius: 5px;
 }
 
 * {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--border)) transparent;
-    scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--border)) transparent;
+  scroll-behavior: smooth;
 }

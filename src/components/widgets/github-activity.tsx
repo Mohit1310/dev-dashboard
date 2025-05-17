@@ -1,25 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
-// import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useGitHubStore } from "@/stores/useGithub";
 import {
+  Circle,
   GitBranch,
-  GitPullRequest,
-  Star,
   GitCommit,
   GitMerge,
+  GitPullRequest,
   MessageSquare,
-  Circle,
+  Star,
 } from "lucide-react";
-import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
-import { useGitHubStore } from "@/stores/useGithub";
+import { useEffect, useState } from "react";
 
 type GitHubEvent = {
   id: string;
   type: string;
   repo: { name: string };
   created_at: string;
+  payload?: {
+    head?: string;
+    pull_request?: { html_url?: string };
+    issue?: { html_url?: string };
+  };
 };
 
 export const GitHubActivity = () => {
@@ -74,7 +78,7 @@ export const GitHubActivity = () => {
     }
   };
 
-  const getEventUrl = (event: any): string | null => {
+  const getEventUrl = (event: GitHubEvent): string | null => {
     const base = `https://github.com/${event.repo.name}`;
     switch (event.type) {
       case "PushEvent":
@@ -139,7 +143,7 @@ export const GitHubActivity = () => {
                   </span>
                 )}
               </p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-muted-foreground text-xs">
                 {new Date(event.created_at).toLocaleString()}
               </p>
             </div>

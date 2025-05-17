@@ -1,11 +1,11 @@
 "use client";
 
-import { useBookmarkStore } from "@/stores/useBookmark";
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { X, Bookmark } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { useBookmarkStore } from "@/stores/useBookmark";
+import { Bookmark, X } from "lucide-react";
+import { useState } from "react";
 import { v4 as uuid } from "uuid";
 
 export default function BookmarksWidget() {
@@ -24,7 +24,7 @@ export default function BookmarksWidget() {
     <Card className="w-full max-w-xl">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Bookmark className="w-5 h-5" />
+          <Bookmark className="h-5 w-5" />
           Bookmarks
         </CardTitle>
       </CardHeader>
@@ -47,13 +47,13 @@ export default function BookmarksWidget() {
           {bookmarks.map((bookmark) => (
             <div
               key={bookmark.id}
-              className="flex items-center justify-between rounded-md border px-3 py-2 text-sm hover:bg-muted transition"
+              className="flex items-center justify-between rounded-md border px-3 py-2 text-sm transition hover:bg-muted"
             >
               <a
                 href={bookmark.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="truncate max-w-xs"
+                className="max-w-xs truncate"
               >
                 {bookmark.title}
               </a>

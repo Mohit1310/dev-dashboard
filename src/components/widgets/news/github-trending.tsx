@@ -1,8 +1,8 @@
 "use client";
 import { fetchGitHubTrendingRepos } from "@/lib/news/fetch-news";
-import React, { useState } from "react";
-import PaginationControls from "./pagination-controls";
+import { useState } from "react";
 import NewsSkeleton from "./news-skeleton";
+import PaginationControls from "./pagination-controls";
 
 type GithubRepo = {
   name: string;
@@ -26,12 +26,12 @@ const GithbuTrending = () => {
           <a
             key={repo.url}
             href={repo.url}
-            className="block border rounded p-3 hover:bg-muted transition"
+            className="block rounded border p-3 transition hover:bg-muted"
             target="_blank"
             rel="noreferrer"
           >
             <div className="font-medium">{repo.name}</div>
-            <div className="text-xs text-muted-foreground">
+            <div className="text-muted-foreground text-xs">
               ⭐ {repo.stars} · {repo.language}
             </div>
           </a>

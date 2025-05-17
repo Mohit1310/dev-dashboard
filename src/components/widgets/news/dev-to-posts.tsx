@@ -1,10 +1,10 @@
 "use client";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import PaginationControls from "./pagination-controls";
 import { fetchDevToPosts } from "@/lib/news/fetch-news";
-import NewsSkeleton from "./news-skeleton";
-import { useState } from "react";
 import type { DevToPost } from "@/lib/types";
+import { useState } from "react";
+import NewsSkeleton from "./news-skeleton";
+import PaginationControls from "./pagination-controls";
 
 const DevToPosts = () => {
   const [devPage, setDevPage] = useState(0);
@@ -19,12 +19,12 @@ const DevToPosts = () => {
             <a
               key={a.id}
               href={a.url}
-              className="block border rounded p-3 hover:bg-muted transition"
+              className="block rounded border p-3 transition hover:bg-muted"
               rel="noreferrer"
               target="_blank"
             >
-              <div className="font-medium line-clamp-2">{a.title}</div>
-              <div className="text-xs text-muted-foreground">
+              <div className="line-clamp-2 font-medium">{a.title}</div>
+              <div className="text-muted-foreground text-xs">
                 by {a.user.username} 💬 {a.comments_count}
               </div>
             </a>

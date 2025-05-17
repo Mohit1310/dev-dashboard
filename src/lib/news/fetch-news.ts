@@ -1,6 +1,6 @@
+import type { RedditPost } from "@/lib/types";
 import { useNewsStore } from "@/stores/useNews";
 import { useQuery } from "@tanstack/react-query";
-import type { RedditPost } from "@/lib/types";
 
 export function fetchHackerNewsPosts(page: number) {
   return useQuery({

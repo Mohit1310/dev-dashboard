@@ -1,20 +1,20 @@
 "use client";
 
-import { devTools } from "@/data/dev-tools";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { devTools } from "@/data/dev-tools";
 import {
-  type LucideIcon,
-  Zap,
-  Send,
-  Search,
+  Bolt,
+  BotMessageSquare,
+  Codesandbox,
   FileText,
   Globe,
-  Codesandbox,
+  type LucideIcon,
   MessageCircleDashed,
-  BotMessageSquare,
-  Bolt,
   MessageCircleHeart,
+  Search,
+  Send,
+  Zap,
 } from "lucide-react";
 
 const icons: Record<string, LucideIcon> = {
@@ -45,10 +45,10 @@ export default function ToolsWidget() {
             <Button
               key={tool.name}
               variant="outline"
-              className="flex items-center gap-2 justify-start w-full"
+              className="flex w-full items-center justify-start gap-2"
               onClick={() => window.open(tool.url, "_blank")}
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="h-4 w-4" />
               {tool.name}
             </Button>
           );

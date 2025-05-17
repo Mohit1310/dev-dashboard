@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import ReactMarkdown from "react-markdown";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 const LOCAL_KEY = "til-notes";
 
